@@ -1,25 +1,28 @@
-# Digital Image Processing - Dönem Projesi Yapay Zeka Kullanım Kaydı
+Oturum bilgileri
+Katılan öğrenci veya öğrenciler: Muhammet Furkan Kart
 
-Bu belge, Digital Image Processing dersi kapsamında yürütülen dönem projesi (Proje 08 - Otopark Doluluk Tespiti) boyunca yapay zeka araçlarından alınan desteği şeffaf bir şekilde belgelemek amacıyla oluşturulmuştur. Proje tek kişilik bir grup tarafından yürütülmektedir.
+Kullanılan araç ve biliniyorsa model: Google Gemini
 
-## Oturum: 5 Ekim 2026
+Çalışmanın amacı: Proje 08 (Masaüstü Otopark Doluluk Tespiti) için uygun veri setinin seçilmesi, 60 fotoğraflık veri havuzunun proje dizinine entegre edilerek GitHub'a gönderilmesi ve OpenCV ile park yerlerinin koordinatlarının bulunması için temel çerçevenin kurulması.
 
-**Kullanılan Yapay Zeka Aracı:** Google Gemini (Büyük Dil Modeli)
-**Proje Aşaması:** Proje seçimi, strateji belirleme, veri seti hazırlığı ve ilk kod altyapısının kurulması.
+İlgili uygulama commit’i veya pull request: [öğrenci sonradan ekleyecek]
+İş,Katkı türü,İlgili dosya veya fonksiyon,Uygulama durumu
+Veri seti ve koşul belirleme stratejisi,yöntem önerisi,data/ klasörü,dosyaya uygulandı
+GitHub Desktop kullanım yönlendirmesi,kavram açıklama,"main branch, commit/push adımları",dosyaya uygulandı
+Manuel fare tıklaması ile koordinat tespiti,kod üretimi,src/koordinat_bulucu.py,kodu verildi (çalıştırma doğrulanmadı)
+Oturum kayıt dosyasının (YapayZeka.md) hazırlanması,dokümantasyon,YapayZeka.md,dosyaya uygulandı
+Yöntem ve ders kapsamına uygunluk
+Kullanılan veya önerilen görüntü işleme yöntemleri ve kısa gerekçeleri: Proje kapsamında tüm otoparkı otomatik taramak yerine "pilot park yerleri" belirlemek için cv2.setMouseCallback ile fare tıklama yöntemi önerilmiştir. Tespit algoritması için yalnızca piksel yoğunluk eşikleme (Thresholding) ve kenar belirleme (Canny Edge Detection) yöntemlerinin klasik OpenCV fonksiyonlarıyla kullanılması planlanmıştır.
 
-### Yapay Zeka Katkısının Detayları:
+Dersin sınırlarıyla çelişen öneri varsa ne olduğu ve düzeltilip düzeltilmediği: Derin öğrenme, makine öğrenmesi veya hazır sınıflandırıcılar içeren hiçbir yöntem önerilmemiş olup, tüm yaklaşım dersin sınırları olan klasik görüntü işleme teknikleriyle uyumlu tutulmuştur.
 
-1. **Proje Stratejisi ve Analiz:** 
-   * Proje yönergesi yapay zeka ile analiz edilerek, tek kişi çalışma şartlarına en uygun projenin (Proje 08) seçilmesi sağlandı.
-   * Ders sorumlusunun verdiği "ileri hedef iptali" ve "hazır veri seti kullanımı" izinleri doğrultusunda en verimli yol haritası çıkarıldı.
+Kaynak veya arama konusu,Yapay zekânın yaptığı işlem,Erişim ve doğrulama durumu,Literatur.md dosyasına katkı
+PKLot Dataset (PUCPR Otopark Verisi) - Kaggle,"Veri seti arama, kamera açısı analizi (PUCPR vs. UFPR) ve 3 ışık/hava koşulunun (Sunny, Cloudy, Rainy) tasnifi.",yalnızca önerildi,Bu oturumda literatür taramasına katkı sağlanmadı.
+Doğrulama ve açık sorunlar
+Gerçekten çalıştırılan test veya deneyler ve gözlenen sonuçlar: Toplam 60 adet fotoğraf (11, 12, 13, 14 Eylül tarihlerinden) data/ klasörüne kopyalanmış ve GitHub üzerinden "Yapay zeka kayıt belgesi eklendi" mesajıyla başarılı bir şekilde repository'e push edilmiştir (öğrencinin bildiriminden doğrulanmıştır).
 
-2. **Veri Seti Seçimi ve Optimizasyonu:** 
-   * Kaggle platformundaki "PKLot" veri setinin analizi yapıldı. Kamera açısı en dik ve sabit olan `PUCPR` alt klasörü tespit edildi.
-   * Proje isterlerindeki "3 farklı ışık/hava koşulunda toplam 60 fotoğraf" kuralını eksiksiz sağlamak üzere güneşli, bulutlu ve yağmurlu (Sunny, Cloudy, Rainy) klasörlerinden veri seçimi stratejisi geliştirildi.
+Çalıştırılmayan kontroller, bilinen hatalar ve belirsizlikler: src/koordinat_bulucu.py içerisindeki OpenCV pencere açma ve koordinat okuma kodunun, öğrencinin yerel Anaconda/Spyder ortamında sorunsuz çalışıp çalışmadığı henüz test edilmemiş ve doğrulanmamıştır.
 
-3. **Geliştirme Ortamı Kararları:** 
-   * OpenCV (`cv2.imshow`) çakışmalarını önlemek için Jupyter Notebook yerine Spyder kullanılmasına karar verildi.
-   * Ekip çalışması gerektiren Branch/Pull Request GitHub özellikleri yerine, tek kişilik çalışmaya uygun doğrudan "main" dalına commit/push yapma yöntemi planlandı.
+Önerilip kullanılmayan veya hatalı olduğu anlaşılan öneriler: Yönergedeki "ileri hedef" zorunluluğu, hoca ile yapılan görüşme sonucunda iptal edildiği için daha karmaşık segmentasyon ve nesne ayırma işlemleri stratejiden çıkarılmıştır.
 
-4. **Kod Üretimi:** 
-   * Otopark görsellerindeki pilot park yerlerinin koordinatlarını dinamik olarak belirlemek için OpenCV'nin fare tıklama olaylarını (`cv2.setMouseCallback`) kullanan `koordinat_bulucu.py` betiğinin ilk taslağı yapay zeka yardımıyla yazıldı.
+Varsa doğrulanmayı bekleyen kaynak bilgileri ve literatür yorumları: Kaggle PKLot veri setine ait PDF veya makale referanslarının doğrulanması beklenmektedir.
