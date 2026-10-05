@@ -1,3 +1,4 @@
+Oturum 1 — 05.10.2026
 Oturum bilgileri
 Katılan öğrenci veya öğrenciler: Muhammet Furkan Kart
 
@@ -26,3 +27,11 @@ Gerçekten çalıştırılan test veya deneyler ve gözlenen sonuçlar: Toplam 6
 Önerilip kullanılmayan veya hatalı olduğu anlaşılan öneriler: Yönergedeki "ileri hedef" zorunluluğu, hoca ile yapılan görüşme sonucunda iptal edildiği için daha karmaşık segmentasyon ve nesne ayırma işlemleri stratejiden çıkarılmıştır.
 
 Varsa doğrulanmayı bekleyen kaynak bilgileri ve literatür yorumları: Kaggle PKLot veri setine ait PDF veya makale referanslarının doğrulanması beklenmektedir.
+Yapay zekâ çıktısında neyi değiştirdik veya reddettik, neden?
+Yapay zeka başlangıçta PCB hata tespiti projesini (Proje 04) önerdi ancak ben Otopark Doluluk Tespiti (Proje 08) üzerinden ilerlemeyi seçtim. Ayrıca 15 fotoğraf kullanmayı düşündüğümde AI bunu onayladı ancak hocanın 60 fotoğraf kuralını hatırlatarak veri setini 60'a çıkarmasını sağladım.
+Commit: "Yapay zeka kayıt belgesi eklendi" (61 dosya)
+Hangi kodu ve sonucu kendimiz kontrol ettik?Kaggle PKLot veri setinden PUCPR kamerasının Sunny, Cloudy ve Rainy klasörlerindeki fotoğrafları bizzat inceledim. Toplam 60 fotoğrafın data klasörüne aktarılmasını ve GitHub'a başarıyla yüklenmesini kontrol ettim. Kod çalıştırma henüz yapılmadı.
+Önerilen kaynaklardan hangilerini kendimiz okuyup doğruladık?Kaggle'daki PKLot veri setinin açıklamasını ve klasör yapısını inceleyip projeye uygunluğunu doğruladım.
+Yapay zekânın kaynak bilgisi veya yorumunda hangi düzeltmeleri yaptık?Yapay zeka bir klasörde sadece 15 fotoğraf olduğunu varsaydı, ancak Kaggle web arayüzünün sadece 15 önizleme gösterdiğini, klasörün içinde aslında 34 fotoğraf olduğunu fark edip bu durumu ben düzelttim.
+Bu oturumda ne öğrendik?Sabit koordinatlı görüntü işleme projelerinde (yapay zeka modeli kullanılmadığında) kamera açısının değişmemesinin ne kadar kritik olduğunu ve GitHub Desktop üzerinden branch (dal) kullanmadan doğrudan ana depoya (main) veri yüklemeyi öğrendim.
+Kaydı kontrol eden öğrenciler:Muhammet Furkan Kart 221451016
