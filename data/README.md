@@ -3,7 +3,7 @@
 ## 1. Verinin Üretimi ve Koşullar
 Bu veri seti, farklı gün saatlerinde (güneş ışığı, keskin bina gölgeleri ve düşük kontrast durumlarında) bir otopark alanının yüksek bir açıdan çekilmiş 60 adet dış mekan fotoğrafından oluşmaktadır. Proje yönergesinde belirtilen "20 farklı doluluk düzeni ve farklı ışık/açı koşulları" hedefine uygun olarak derlenmiştir. Kamera açısının yüksekliği ve mesafesi nedeniyle karelerde hiçbir yayanın veya kişinin yüzü seçilememekte olup, kişisel verilerin gizliliği korunmuştur.
 
-**Dış Veri Kaynağı:** [Buraya veri setini indirdiğin linki veya adını yaz, örn: Açık kaynaklı PKLot veri setinden alınmıştır / Ders kapsamında öğretim görevlisi tarafından sağlanmıştır.]
+**Dış Veri Kaynağı:** [  Açık kaynaklı PKLot veri setinden alınmıştır.https://www.kaggle.com/ ]
 **Kullanım Koşulları:** Sadece akademik ve eğitim amaçlı dönem projesi kapsamında kullanılmıştır.
 
 ## 2. Etiket Biçimi (Label Format)
