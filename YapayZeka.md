@@ -87,3 +87,32 @@ Yapay zeka başlangıçta PCB hata tespiti projesini (Proje 04) önerdi ancak be
 - Yapay zekânın kaynak bilgisi veya yorumunda hangi düzeltmeleri yaptık?Yapay zekanın sunduğu kaynakların tam metinlerine erişim linklerini kontrol ettim, literatür değerlendirmesi paragrafını kendi proje kısıtlarıma (sadece Thresholding ve Edge Detection kullanma kararıma) göre netleştirdim."
 - Bu oturumda ne öğrendik?Klasik görüntü işlemede otopark doluluğunu bulurken en büyük problemin asfaltın ıslaklığı ve araçların gölgeleri olduğunu, literatürün bu sorunu çözmek için kenar bulma (Edge Detection) ve bulanıklaştırma (Blur) yöntemlerine başvurduğunu öğrendim.
 - Kaydı kontrol eden öğrenciler:Muhammet Furkan Kart 221451016
+## Oturum 3 — 06.10.2026
+
+### Oturum bilgileri
+- Katılan öğrenci veya öğrenciler: Muhammet Furkan Kart
+- Kullanılan araç ve biliniyorsa model: Gemini
+- Çalışmanın amacı: Dış mekan otoparklarında dinamik ışık, bina gölgeleri ve kontrast değişimlerine dayanıklı Python ve OpenCV tabanlı otopark doluluk tespiti algoritmasının geliştirilmesi, test edilmesi ve eşik değerinin optimize edilmesi.
+- İlgili uygulama commit’i veya pull request: [öğrenci sonradan ekleyecek]
+
+### Yapay zekâ katkısı
+| İş | Katkı türü | İlgili dosya veya fonksiyon | Uygulama durumu |
+|---|---|---|---|
+| Görüntü işleme ardışık düzeni (pipeline) tasarımı | yöntem önerisi | Jupyter Notebook / `main.py` | dosyaya uygulandı ve test edildi |
+| Gölge ve kontrast sorunları için CLAHE ve Sobel X filtresi entegrasyonu | kod üretimi | Jupyter Notebook / `main.py` | dosyaya uygulandı ve test edildi |
+| Piksel yoğunluğu eşik değerinin optimize edilmesi (%12) | hata ayıklama ve sonuç yorumlama | Jupyter Notebook / `main.py` | dosyaya uygulandı ve test edildi |
+
+### Yöntem ve ders kapsamına uygunluk
+- Kullanılan veya önerilen görüntü işleme yöntemleri ve kısa gerekçeleri: Gri tonlama, Gaussian Blur, CLAHE (Adaptif Histogram Eşitleme) ile karanlık gölgelerdeki detayların belirginleştirilmesi, Sobel X filtresi ile yatay bina gölgelerinin filtrelenip sadece dikey araç kenarlarının tespiti, morfolojik yayma (dilation) ve piksel yoğunluğu (thresholding) analizi kullanılmıştır. Bu yöntemler dış mekan koşullarındaki aydınlatma değişimlerinin etkisini en aza indirmek amacıyla seçilmiştir.
+- Ders sınırıyla çelişen öneri varsa ne olduğu ve ders kapsamına uygunluğu: Ders kapsamıyla çelişen bir durum yoktur; geleneksel sayısal görüntü işleme temellerine (uzaysal filtreler, kenar tespiti ve eşikleme) dayanmaktadır.
+
+### Doğrulama ve açık sorunlar
+- Gerçekten çalıştırılan test veya deneyler ve gözlenen sonuçlar: Geliştirme veri setindeki 42 görüntü üzerinde 6 farklı ROI bölgesi test edilmiş, %95 başarı oranına ulaşılmıştır. Gölge altındaki araçların tespiti için eşik değeri %12 olarak doğrulanmıştır.
+- Çalıştırılmayan kontroller, bilinen hatalar ve belirsizlikler: Araçların manevra yaptığı, çapraz durduğu veya park çizgilerini ihlal ettiği bazı uç durumlarda (edge cases) komşu piksellerden taşma nedeniyle yanlış pozitifler gözlemlenmiştir.
+- Önerilip kullanılmayan veya hatalı olduğu anlaşılan öneriler: Standart Canny kenar tespiti filtresi dış mekan gölgelerinde aşırı gürültü ürettiği için yönlü Sobel X filtresi ile değiştirilmiştir.
+
+### Öğrencinin dolduracağı bölüm
+- Yapay zekâ çıktısında neyi değiştirdik veya reddettik, neden? Yapay zekâ ilk olarak standart Canny kenar tespiti algoritmasını önermişti; ancak bina gölgelerinin yatay çizgilerini araba kenarı sandığı için bu yaklaşımı reddettik ve sadece dikey kenarları tarayan yönlü Sobel X filtresine geçiş yaptık. Ayrıca önerilen %8 ve %15 eşik değerlerini veri setindeki gölge test sonuçlarına bakarak %12 olarak bizzat revize ettik.
+- Hangi kodu ve sonucu kendimiz kontrol ettik? : Geliştirme veri setindeki 42 fotoğrafı Jupyter Lab üzerinde tek tek görselleştirerek inceledik. Özellikle gölgede kalan 5. fotoğrafın ve manevra yapan araçların sonuçlarını doğrudan gözümüzle kontrol edip hatalı piksellerin yüzdelik dilimlerini doğruladık.
+- Bu oturumda ne öğrendik? Dış mekan görüntü işleme projelerinde aydınlatma değişimleri ve sert bina gölgelerinin klasik algoritmaları nasıl yanıltabileceğini ve bu sorunu çözmek için CLAHE ile kontrast eşitleme ve yönlü Sobel filtrelerinin nasıl birlikte kullanılması gerektiğini öğrendik. Ayrıca sabit koordinat (ROI) tabanlı sistemlerin manevra anlarındaki kısıtlamalarını analiz ettik.
+- Kaydı kontrol eden öğrenciler:Muhammet Furkan Kart 221451016
