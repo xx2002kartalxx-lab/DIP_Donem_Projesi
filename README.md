@@ -22,3 +22,12 @@ Proje geliştirme testleri Jupyter Notebook üzerinden yürütülmektedir. Geli�
 Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer almaktadır. Veriler geliştirme (42 adet) ve test (18 adet) olarak ikiye ayrılmıştır. Veri setinin çekim koşulları ve detaylı bilgisi için data/README.md dosyasına bakabilirsiniz.
 ## Bilinen Sınırlamalar
 Sistem "Sabit Koordinat Kutuları (ROI)" mantığıyla çalıştığından standart durumlarda %95 kararlılık göstermektedir. Ancak araçların park alanından çıkmak için manevra yaptığı, çapraz durduğu veya park çizgilerini ihlal ettiği durumlarda komşu alanlara piksel taşması olmakta; bu da boş alanların "dolu" zannedilmesine (False Positive) yol açabilmektedir.
+## Sonuçlar ve Performans
+Test setinde (18 görsel) elde edilen nihai başarı oranı: **%94.4**
+
+**Başarılı Tespit Örneği:**
+![Başarılı Örnek Çıktı](results/basarili_ornek.png)
+
+**Hata Analizi (Manevra Yapan Araç Anomalisi):**
+Sistemin yanıldığı tek test fotoğrafı; aracın geri çıkarken yatay pozisyonda kalıp komşu park yerlerinin izleme bölgesini (ROI) fiziksel olarak ihlal ettiği durumdur.
+![Hatalı Tespit - Manevra](results/hata_analizi.png)
