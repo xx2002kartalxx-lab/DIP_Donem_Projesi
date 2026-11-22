@@ -17,7 +17,7 @@ Sistem, belirlenen park alanlarını (ROI - Region of Interest) analiz etmek iç
 Projeyi bilgisayarınızda çalıştırmak için aşağıdaki kütüphanelerin yüklü olması gerekmektedir:
 pip install opencv-python numpy matplotlib jupyterlab
 ## Örnek Çalıştırma Komutu
-Proje geliştirme testleri Jupyter Notebook üzerinden yürütülmektedir. Geliştirme ortamını başlatmak için terminale şu komutu yazabilirsiniz:jupyter lab src/Otopark_ArGe_Testleri.ipynb
+Proje geliştirme testleri Jupyter Notebook üzerinden yürütülmektedir. Geliştirme ortamını başlatmak için terminale şu komutu yazabilirsiniz:jupyter lab src/otopark_analizi_jupyter.ipynb
 ## Veri Erişimi
 Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer almaktadır. Veriler geliştirme (42 adet) ve test (18 adet) olarak ikiye ayrılmıştır. Veri setinin çekim koşulları ve detaylı bilgisi için data/README.md dosyasına bakabilirsiniz.
 ## Bilinen Sınırlamalar
