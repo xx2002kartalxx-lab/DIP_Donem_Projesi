@@ -23,7 +23,9 @@ Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer a
 ## Bilinen Sınırlamalar
 Sistem "Sabit Koordinat Kutuları (ROI)" mantığıyla çalıştığından standart durumlarda %95 kararlılık göstermektedir. Ancak araçların park alanından çıkmak için manevra yaptığı, çapraz durduğu veya park çizgilerini ihlal ettiği durumlarda komşu alanlara piksel taşması olmakta; bu da boş alanların "dolu" zannedilmesine (False Positive) yol açabilmektedir.
 ## Sonuçlar ve Performans
-Test setinde (18 görsel) elde edilen nihai başarı oranı: **%94.4**
+Test setinde **18 fotoğraf** değerlendirilmiştir. Fotoğraf bazında 17 fotoğrafın 6 park yerinin tamamı doğru tespit edilmiş, 1 fotoğrafta kısmi hata görülmüştür. Fotoğraf bazındaki başarı oranı **%94,44**'tür.
+
+Toplam **108 park yeri** (18 fotoğraf × 6 park yeri) üzerinden yapılan doğrulamada **106 park yeri doğru**, **2 park yeri yanlış** tespit edilmiştir. Park yeri bazındaki doğruluk oranı **%98,15**'tir.
 
 **Başarılı Tespit Örneği:**
 ![Başarılı Örnek Çıktı](results/basarili_ornek.png)
