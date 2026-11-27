@@ -1,3 +1,4 @@
+
 # Otopark Doluluk Tespiti Veri Seti
 
 ## 1. Verinin Üretimi ve Koşullar
