@@ -15,14 +15,22 @@ Sistem, belirlenen park alanlarını (ROI - Region of Interest) analiz etmek iç
 ## Kurulum
 Projeyi bilgisayarınızda çalıştırmak için gerekli kütüphaneleri `requirements.txt` üzerinden kurabilirsiniz:
 
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 Alternatif olarak kütüphaneleri tek komutla kurmak için:
 
-bash
+```bash
 pip install opencv-python numpy matplotlib jupyterlab
+```
+
+## Örnek Çalıştırma Komutu
+Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmektedir. Ortamı başlatmak için proje kök dizininde terminale şu komutu yazabilirsiniz:
+
+```bash
+jupyter lab src/otopark_analizi_jupyter.ipynb
+```
 
 ## Örnek Çalıştırma Komutu
 Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmektedir. Ortamı başlatmak için proje kök dizininde terminale şu komutu yazabilirsiniz:
