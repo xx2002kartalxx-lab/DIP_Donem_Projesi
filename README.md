@@ -12,16 +12,29 @@ Sistem, belirlenen park alanlarını (ROI - Region of Interest) analiz etmek iç
 2. **Gürültü Filtreleme:** Gaussian Blur ile ufak pürüzler giderilir.
 3. **Yönlü Kenar Tespiti (Sobel X):** Bina gölgelerinin yarattığı yatay çizgileri (yanılgıları) yok etmek ve sadece araçların dikey hatlarını bulmak için X ekseninde Sobel filtresi kullanılır.
 4. **Morfolojik İşlemler & Eşikleme:** Bulunan kenarlar genişletilir (dilate) ve ROI içerisindeki beyaz piksel yoğunluğu hesaplanır. Yapılan Ar-Ge testleri sonucunda optimum doluluk eşik değeri **%12** olarak belirlenmiştir.
-
 ## Kurulum
-Projeyi bilgisayarınızda çalıştırmak için aşağıdaki kütüphanelerin yüklü olması gerekmektedir:
+Projeyi bilgisayarınızda çalıştırmak için gerekli kütüphaneleri `requirements.txt` üzerinden kurabilirsiniz:
+
+bash
+pip install -r requirements.txt
+
+
+Alternatif olarak kütüphaneleri tek komutla kurmak için:
+
+bash
 pip install opencv-python numpy matplotlib jupyterlab
+
 ## Örnek Çalıştırma Komutu
-Proje geliştirme testleri Jupyter Notebook üzerinden yürütülmektedir. Geliştirme ortamını başlatmak için terminale şu komutu yazabilirsiniz:jupyter lab src/otopark_analizi_jupyter.ipynb
+Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmektedir. Ortamı başlatmak için proje kök dizininde terminale şu komutu yazabilirsiniz:
+
+bash
+jupyter lab src/otopark_analizi_jupyter.ipynb
+
+
 ## Veri Erişimi
 Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer almaktadır. Veriler geliştirme (42 adet) ve test (18 adet) olarak ikiye ayrılmıştır. Veri setinin çekim koşulları ve detaylı bilgisi için data/README.md dosyasına bakabilirsiniz.
 ## Bilinen Sınırlamalar
-Sistem "Sabit Koordinat Kutuları (ROI)" mantığıyla çalıştığından standart durumlarda %95 kararlılık göstermektedir. Ancak araçların park alanından çıkmak için manevra yaptığı, çapraz durduğu veya park çizgilerini ihlal ettiği durumlarda komşu alanlara piksel taşması olmakta; bu da boş alanların "dolu" zannedilmesine (False Positive) yol açabilmektedir.
+Sistem "Sabit Koordinat Kutuları (ROI)" mantığıyla çalıştığından kamera açısının sabit kalmasını gerektirir; standart park düzenlerinde yüksek kararlılık (test setinde fotoğraf bazlı %94,44; park yeri bazlı %98,15 doğruluk) göstermektedir. Ancak araçların park alanından çıkmak için manevra yaptığı, çapraz durduğu veya park çizgilerini ihlal ettiği durumlarda komşu alanlara piksel taşması olmakta; bu da boş alanların "dolu" zannedilmesine (False Positive) yol açabilmektedir.
 ## Sonuçlar ve Performans
 Test setinde **18 fotoğraf** değerlendirilmiştir. Fotoğraf bazında 17 fotoğrafın 6 park yerinin tamamı doğru tespit edilmiş, 1 fotoğrafta kısmi hata görülmüştür. Fotoğraf bazındaki başarı oranı **%94,44**'tür.
 
