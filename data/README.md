@@ -11,7 +11,7 @@ Bu veri seti, farklı gün saatlerinde (güneş ışığı, keskin bina gölgele
 Geleneksel sayısal görüntü işleme (DIP) yöntemleri kullanıldığı için harici bir etiketleme dosyası (XML, JSON, YOLO txt vb.) oluşturulmamıştır. Sistem "Sabit Koordinat (ROI)" mantığıyla çalıştığı için, incelenen 6 adet park yerinin piksel koordinatları (x1, y1, x2, y2) doğrudan Python kodunun içerisinde bir liste (`park_yerleri`) olarak tanımlanmıştır. Görsel çıktılarda **yeşil kutular boş, mavi kutular dolu park yerlerini** göstermektedir.
 
 ## 3. Geliştirme ve Test Dosyaları
-Veri setindeki toplam 60 fotoğraf, algoritmanın Ar-Ge aşaması ve nihai doğrulaması için %70 ve %30 oranlarında iki klasöre ayrılmıştır:
+Veri setindeki toplam 60 fotoğraf, algoritmanın Geliştirme aşaması ve nihai doğrulaması için %70 ve %30 oranlarında iki klasöre ayrılmıştır:
 * **`data/gelistirme/` (42 Fotoğraf):** Görüntü işleme algoritmalarının (CLAHE, Sobel X) entegrasyonu ve piksel yoğunluğu eşik değerinin (Threshold: %12) optimum seviyesinin belirlenmesi için kullanılmıştır.
 * **`data/test/` (18 Fotoğraf):** Sistemin geliştirme aşamasında hiç görmediği, parametreleri sabitlenmiş nihai algoritmanın gerçek dünya başarısını ölçmek amacıyla ayrılmış test görselleridir.
 
