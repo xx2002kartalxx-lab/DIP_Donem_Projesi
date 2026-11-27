@@ -35,9 +35,9 @@ jupyter lab src/otopark_analizi_jupyter.ipynb
 ## Örnek Çalıştırma Komutu
 Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmektedir. Ortamı başlatmak için proje kök dizininde terminale şu komutu yazabilirsiniz:
 
-bash
+~~~bash
 jupyter lab src/otopark_analizi_jupyter.ipynb
-
+~~~
 
 ## Veri Erişimi
 Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer almaktadır. Veriler geliştirme (42 adet) ve test (18 adet) olarak ikiye ayrılmıştır. Veri setinin çekim koşulları ve detaylı bilgisi için data/README.md dosyasına bakabilirsiniz.
