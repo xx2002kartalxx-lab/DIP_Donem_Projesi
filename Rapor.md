@@ -12,7 +12,7 @@ Proje geliştirme sürecinde (42 fotoğraflık veri seti) karşılaşılan en b�
 4. **Sobel X Filtresi:** Yatay bina gölgelerini eleyip, sadece araçların dikey hatlarını (kapı/sütun) yakalamak için Canny yerine Yönlü Sobel X (ksize=3) tercih edildi.
 5. **Morfolojik Genişletme (Dilate):** Sobel ile elde edilen ince hatları birleştirmek için kullanıldı.
 6. **ROI Eşikleme (Threshold):** 6 sabit park yeri için beyaz piksel/toplam piksel oranı hesaplandı. 42 fotoğraflık geliştirme setinde optimum doluluk sınırı **%12** olarak belirlendi.
-
+42 geliştirme fotoğrafı (toplam 252 park yeri gözlemi) üzerinde aynı ön ve son işleme adımlarıyla yapılan sayısal karşılaştırmada Canny ortalama %27,79, Sobel X ise ortalama %18,03 kenar yoğunluğu üretmiş ve Sobel X 252 gözlemin 250'sinde gölge kaynaklı gürültüyü azaltmıştır. Ayrıca Sobel X çıktılarında %11,33 ile %13,92 arasında doğal bir ayrım boşluğu oluştuğu gözlemlenmiş, bu bulgu %12 eşik değerinin seçimini sayısal olarak desteklemiştir (bkz. results/canny_sobel_gelistirme_karsilastirmasi.csv).
 ## 2. Test Sonuçları ve Başarı Oranı (Final Aşaması)
 Geliştirme aşamasında belirlenen parametreler (Sobel X ve %12 eşik değeri) değiştirilmeden, sistem daha önce görmediği farklı araç ve park düzenlerini içeren **18 fotoğraflık test setinde** çalıştırılmıştır.
 
