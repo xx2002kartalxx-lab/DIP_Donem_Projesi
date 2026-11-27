@@ -14,15 +14,20 @@ Proje geliştirme sürecinde (42 fotoğraflık veri seti) karşılaşılan en b�
 6. **ROI Eşikleme (Threshold):** 6 sabit park yeri için beyaz piksel/toplam piksel oranı hesaplandı. 42 fotoğraflık geliştirme setinde optimum doluluk sınırı **%12** olarak belirlendi.
 
 ## 2. Test Sonuçları ve Başarı Oranı (Final Aşaması)
-Geliştirme aşamasında belirlenen parametreler (Sobel X ve %12 eşik değeri) hiçbir şekilde değiştirilmeden, sistemin daha önce hiç görmediği farklı araç ve park düzenlerini içeren **18 fotoğraflık tamamen izole test setinde** çalıştırılmıştır. 
+Geliştirme aşamasında belirlenen parametreler (Sobel X ve %12 eşik değeri) değiştirilmeden, sistem daha önce görmediği farklı araç ve park düzenlerini içeren **18 fotoğraflık test setinde** çalıştırılmıştır.
 
 * **Test Edilen Görüntü Sayısı:** 18
 * **Tam Doğru Tahmin (6 park yerinin tamamı hatasız):** 17
-* **Hatalı Tahmin (Kısmi hata):** 1
-* **Genel Başarı Oranı:** %94.4
+* **Kısmi Hata Görülen Görüntü:** 1
+* **Fotoğraf Bazında Başarı Oranı:** %94,44
 
+Test setindeki toplam 108 park yeri (18 fotoğraf × 6 park yeri) tek tek doğrulanmıştır:
+* **Doğru tespit edilen park yeri:** 106
+* **Yanlış tespit edilen park yeri:** 2
+* **Park Yeri Bazında Doğruluk:** %98,15
 
 ## 3. Hata Analizi
-Sistemin yanıldığı tek test fotoğrafında hata, algoritmik bir eksiklikten ziyade statik ROI yönteminin fiziksel limitlerinden (dinamik manevra engeli) kaynaklanmıştır. Hatalı tespit edilen görsel incelendiğinde; koyu renkli bir aracın park yerinden manevra yaparak çıkarken yatay bir pozisyonda kaldığı ve yandaki park yerlerinin ROI (İzleme Bölgesi) sınırlarını fiziksel olarak ihlal ettiği görülmüştür. Araç aslında o kutuya park etmiyor olmasına rağmen, gövde hatları Sobel X filtresi tarafından yakalanmış ve bölgedeki piksel yoğunluğu %12'lik optimum eşik değerini aştığı için ilgili park yeri sistem tarafından anlık olarak "Dolu" (False Positive) olarak algılanmıştır. Bu durum, statik koordinat tabanlı sistemlerin, çizgiyi aşan veya manevra halindeki araçlara karşı doğal bir zafiyeti olduğunu kanıtlamaktadır.
+Sistemin yanıldığı tek test fotoğrafında 6 park yerinden 4'ü doğru, 2'si yanlış tespit edilmiştir. Hata, statik ROI yönteminin fiziksel limitlerinden (dinamik manevra engeli) kaynaklanmıştır. Hatalı tespit edilen görsel incelendiğinde; koyu renkli bir aracın park yerinden manevra yaparak çıkarken yatay bir pozisyonda kaldığı ve yandaki park yerlerinin ROI (İzleme Bölgesi) sınırlarını fiziksel olarak ihlal ettiği görülmüştür. Araç aslında o kutuya park etmiyor olmasına rağmen, gövde hatları Sobel X filtresi tarafından yakalanmış ve bölgedeki piksel yoğunluğu %12'lik eşik değerini aştığı için ilgili park yeri sistem tarafından anlık olarak "Dolu" (False Positive) olarak algılanmıştır. Bu durum, statik koordinat tabanlı sistemlerin, çizgiyi aşan veya manevra halindeki araçlara karşı doğal bir zafiyeti olduğunu göstermektedir.
+
 ## 4. Sonuç
-Proje, hoca yönergesindeki 4 aşamalı geliştirme planına (Veri, Temel Çözüm, Deney, Final) tamamen uygun olarak geliştirilmiş ve tekrarlanabilir (reproducible) bir pipeline oluşturularak hedeflenen başarıya ulaşmıştır.
+Geliştirme aşamasında 42 fotoğraf kullanılmış, nihai değerlendirme 18 test fotoğrafı üzerinde yapılmıştır. Proje sonucunda fotoğraf bazında %94,44, park yeri bazında ise %98,15 doğruluk elde edilmiştir.
