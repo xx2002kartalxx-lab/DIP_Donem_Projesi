@@ -10,7 +10,7 @@ Bu proje, dış mekan otoparklarında dinamik ışık değişimleri, keskin bina
 Sistem, belirlenen park alanlarını (ROI - Region of Interest) analiz etmek için şu ardışık düzeni (pipeline) kullanır:
 1. **Gri Tonlama & CLAHE:** Karanlık gölgelerdeki detayları ortaya çıkarmak için Adaptif Histogram Eşitleme (CLAHE) uygulanır.
 2. **Gürültü Filtreleme:** Gaussian Blur ile ufak pürüzler giderilir.
-3. **Yönlü Kenar Tespiti (Sobel X):** Bina gölgelerinin yarattığı yatay çizgileri (yanılgıları) yok etmek ve sadece araçların dikey hatlarını bulmak için X ekseninde Sobel filtresi kullanılır.
+3. **Yönlü Kenar Tespiti (Sobel X):** Bina gölgelerinin yarattığı yatay çizgileri (yanılgıları) azaltmak ve sadece araçların dikey hatlarını bulmak için X ekseninde Sobel filtresi kullanılır.
 4. **Morfolojik İşlemler & Eşikleme:** Bulunan kenarlar genişletilir (dilate) ve ROI içerisindeki beyaz piksel yoğunluğu hesaplanır. Yapılan Ar-Ge testleri sonucunda optimum doluluk eşik değeri **%12** olarak belirlenmiştir.
 ## Kurulum
 Projeyi bilgisayarınızda çalıştırmak için gerekli kütüphaneleri `requirements.txt` üzerinden kurabilirsiniz:
@@ -32,12 +32,7 @@ Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmekte
 jupyter lab src/otopark_analizi_jupyter.ipynb
 ```
 
-## Örnek Çalıştırma Komutu
-Proje geliştirme ve test adımları Jupyter Notebook üzerinden yürütülmektedir. Ortamı başlatmak için proje kök dizininde terminale şu komutu yazabilirsiniz:
 
-~~~bash
-jupyter lab src/otopark_analizi_jupyter.ipynb
-~~~
 
 ## Veri Erişimi
 Kullanılan otopark veri seti projenin kök dizinindeki data/ klasöründe yer almaktadır. Veriler geliştirme (42 adet) ve test (18 adet) olarak ikiye ayrılmıştır. Veri setinin çekim koşulları ve detaylı bilgisi için data/README.md dosyasına bakabilirsiniz.
