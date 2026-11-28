@@ -14,7 +14,7 @@ Bu projenin amacı; derin öğrenme veya makine öğrenmesi sınıflandırıcıl
 ---
 
 ## 2. Veri Seti ve Hazırlık
-Çalışmada açık kaynaklı **PKLot (PUCPR)** dış mekan otopark veri setinden seçilen toplam **60 fotoğraf** kullanılmıştır. Veri seti, Zorlaştırıcı koşul olarak günün farklı saatlerindeki ışık değişimi ve güneşli ile bulutlu hava durumu kullanılmıştır, keskin bina gölgeleri ve düşük kontrast koşullarını ile **8 farklı doluluk düzenini** kapsamaktadır.
+Veri seti, farklı gün saatlerine ait güneş ışığı, keskin bina gölgeleri ve düşük kontrast koşullarını ile 8 farklı doluluk düzenini kapsamaktadır. Zorlaştırıcı koşul olarak günün farklı saatlerindeki ışık değişimi ve güneşli ile bulutlu hava durumu kullanılmıştır.
 
 * **Geliştirme Seti (`data/gelistirme/`):** 42 fotoğraf (%70) – Algoritma tasarımı, yöntem karşılaştırması ve optimum eşik değerinin belirlenmesi için kullanılmıştır.
 * **Test Seti (`data/test/`):** 18 fotoğraf (%30) – Geliştirme aşamasında sabitlenen parametrelerle nihai performans değerlendirmesi için ayrılmıştır.
@@ -37,7 +37,7 @@ Proje, ders kapsamına uygun olarak yalnızca klasik görüntü işleme ve geome
 ## 4. Karşılaştırmalı Deney (Canny vs. Sobel X)
 Yöntem seçimini sayısal olarak doğrulamak amacıyla, **42 geliştirme fotoğrafı** (toplam **252 park yeri gözlemi**) üzerinde aynı ön işleme (Gri Tonlama + CLAHE + Gaussian Blur) ve son işleme (`3×3` Dilate) adımları sabit tutularak **Canny (50, 150)** ve **Sobel X (ksize=3, eşik=50)** yöntemleri karşılaştırılmıştır.
 
-| Yöntem | Ortalama Kenar Yoğunluğu (42 Görsel / 252 Gözlem) | Gölge  |
+| Yöntem | Ortalama Kenar Yoğunluğu (42 Görsel / 252 Gözlem) | Gözlem  |
 | :--- | :---: | :--- |
 | **Canny (50, 150)** | **%27,79** |Ortalama kenar yoğunluğu daha yüksektir. |
 | **Sobel X (ksize=3)** | **%18,03** | 252 gözlemin 250'sinde (%99,2) Canny'den daha düşük kenar yoğunluğu üretmiştir. |
