@@ -5,7 +5,7 @@
 Bu projede kullanılan görüntüler, dış mekan otopark doluluk tespiti çalışmalarında standart kıyaslama (benchmark) olarak kullanılan **PKLot** veri setinin **PUCPR** kamerasına ait kayıtlarından seçilmiştir.
 
 * **Resmi Veri Seti Sayfası (UFPR - VRI Lab):** https://web.inf.ufpr.br/vri/databases/parking-lot-database/
-* **Kaggle Veri Seti Bağlantısı:** https://www.kaggle.com/datasets/ammarnassanalhajali/pklot-dataset
+* **Kaggle Veri Seti Bağlantısı:** https://www.kaggle.com/datasets/blanderbuss/parking-lot-dataset
 * **Kullanım Koşulu ve Lisans:** Veri seti **Creative Commons Attribution 4.0 International (CC BY 4.0)** lisansı ile sunulmaktadır. Kaynak makaleye atıf yapılması koşuluyla akademik ve eğitim amaçlı çalışmalarda serbestçe kullanılabilir.
 * **Kaynak Makale Atfı:** Almeida, P. R. L., Oliveira, L. S., Britto Jr., A. S., Silva Jr., E. J., & Koerich, A. L. (2015). *PKLot – A robust dataset for parking lot classification*. Expert Systems with Applications, 42(11), 4937–4949.
 
