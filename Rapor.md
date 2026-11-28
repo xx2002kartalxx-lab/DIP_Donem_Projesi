@@ -14,7 +14,7 @@ Bu projenin amacı; derin öğrenme veya makine öğrenmesi sınıflandırıcıl
 ---
 
 ## 2. Veri Seti ve Hazırlık
-Çalışmada açık kaynaklı **PKLot (PUCPR)** dış mekan otopark veri setinden seçilen toplam **60 fotoğraf** kullanılmıştır. Veri seti, farklı gün saatlerine ait güneş ışığı, keskin bina gölgeleri ve düşük kontrast koşullarını ile **8 farklı doluluk düzenini** kapsamaktadır.
+Çalışmada açık kaynaklı **PKLot (PUCPR)** dış mekan otopark veri setinden seçilen toplam **60 fotoğraf** kullanılmıştır. Veri seti, Zorlaştırıcı koşul olarak günün farklı saatlerindeki ışık değişimi ve güneşli ile bulutlu hava durumu kullanılmıştır, keskin bina gölgeleri ve düşük kontrast koşullarını ile **8 farklı doluluk düzenini** kapsamaktadır.
 
 * **Geliştirme Seti (`data/gelistirme/`):** 42 fotoğraf (%70) – Algoritma tasarımı, yöntem karşılaştırması ve optimum eşik değerinin belirlenmesi için kullanılmıştır.
 * **Test Seti (`data/test/`):** 18 fotoğraf (%30) – Geliştirme aşamasında sabitlenen parametrelerle nihai performans değerlendirmesi için ayrılmıştır.
@@ -28,7 +28,7 @@ Proje, ders kapsamına uygun olarak yalnızca klasik görüntü işleme ve geome
 1. **Gri Tonlama (Grayscale):** Renk bilgisinden kaynaklanan gereksiz işlem yükünü ve aydınlatma renk sapmalarını azaltmak için uygulanmıştır.
 2. **CLAHE (`clipLimit=2.0`, `tileGridSize=(8, 8)`):** Gölge altında kalan siyah ve koyu renkli araçların kenar detaylarını, aydınlık bölgeleri patlatmadan yerel kontrast artırımıyla ortaya çıkarmak için seçilmiştir.
 3. **Gaussian Blur (`5×5`):** Asfalt yüzeyindeki küçük pürüzleri ve yüksek frekanslı çevresel gürültüleri bastırmak amacıyla uygulanmıştır.
-4. **Yönlü Kenar Tespiti – Sobel X (`ksize=3`) ve İkili Eşikleme (`threshold=50`):** Otoparka düşen keskin bina gölgelerinin oluşturduğu baskın yatay çizgileri eleyip, yalnızca araç gövdelerinin dikey hatlarını (kapı, sütun, tampon kenarları) yakalamak amacıyla standart Canny yerine X ekseni yönlü Sobel filtresi tercih edilmiştir.
+4. **Yönlü Kenar Tespiti – Sobel X (`ksize=3`) ve İkili Eşikleme (`threshold=50`):** Otoparka düşen keskin bina gölgelerinin oluşturduğu baskın yatay çizgileri azaltmayı hedefleyerek, yalnızca araç gövdelerinin dikey hatlarını (kapı, sütun, tampon kenarları) yakalamak amacıyla standart Canny yerine X ekseni yönlü Sobel filtresi tercih edilmiştir.
 5. **Morfolojik Genişletme (`dilate`, `3×3` çekirdek, `iterations=1`):** Sobel X ile elde edilen ince ve kopuk dikey kenar hatlarını bütünleştirmek için uygulanmıştır.
 6. **ROI Piksel Yoğunluğu Eşiklemesi (`%12`):** Her bir sabit park alanı (ROI) içerisindeki beyaz kenar piksellerinin toplam ROI alanına oranı hesaplanmıştır. Yoğunluk `%12` üzerinde ise **Dolu (Mavi)**, `%12` ve altında ise **Boş (Yeşil)** kararı verilmiştir.
 
@@ -37,12 +37,12 @@ Proje, ders kapsamına uygun olarak yalnızca klasik görüntü işleme ve geome
 ## 4. Karşılaştırmalı Deney (Canny vs. Sobel X)
 Yöntem seçimini sayısal olarak doğrulamak amacıyla, **42 geliştirme fotoğrafı** (toplam **252 park yeri gözlemi**) üzerinde aynı ön işleme (Gri Tonlama + CLAHE + Gaussian Blur) ve son işleme (`3×3` Dilate) adımları sabit tutularak **Canny (50, 150)** ve **Sobel X (ksize=3, eşik=50)** yöntemleri karşılaştırılmıştır.
 
-| Yöntem | Ortalama Kenar Yoğunluğu (42 Görsel / 252 Gözlem) | Gölge ve Zemin Gürültüsü Davranışı |
+| Yöntem | Ortalama Kenar Yoğunluğu (42 Görsel / 252 Gözlem) | Gölge  |
 | :--- | :---: | :--- |
-| **Canny (50, 150)** | **%27,79** | Yatay bina gölgelerini ve asfalt dokusunu yoğun biçimde kenar olarak yakalar. |
-| **Sobel X (ksize=3)** | **%18,03** | Yatay gölge çizgilerini bastırır; 252 gözlemin 250'sinde (%99,2) daha düşük gürültü üretir. |
+| **Canny (50, 150)** | **%27,79** |Ortalama kenar yoğunluğu daha yüksektir. |
+| **Sobel X (ksize=3)** | **%18,03** | 252 gözlemin 250'sinde (%99,2) Canny'den daha düşük kenar yoğunluğu üretmiştir. |
 
-* Sobel X çıktılarında ortalama **9,76 puan** daha düşük kenar gürültüsü elde edilmiştir.
+* Sobel X çıktılarında ortalama **9,76 puan** daha düşük kenar yoğunluğu elde edilmiştir.
 * Geliştirme setindeki Sobel X dağılımı incelendiğinde **%11,33 ile %13,92** arasında hiçbir gözlem bulunmadığı, boş ve dolu kümelerinin doğal bir boşlukla net biçimde ayrıldığı görülmüştür. Bu bulgu, optimum eşik değeri olarak **%12** seçilmesini sayısal olarak desteklemiştir.
 * Fotoğraf ve park yeri bazlı tüm karşılaştırma verileri `results/canny_sobel_gelistirme_karsilastirmasi.csv` dosyasında kayıtlıdır.
 
@@ -55,8 +55,9 @@ Geliştirme aşamasında belirlenen tüm parametreler (CLAHE, `5×5` Gaussian Bl
 | :--- | :---: | :---: | :---: | :---: |
 | **Fotoğraf Bazlı (6/6 tam doğru kare)** | 17 | 1 | 18 | **%94,44** |
 | **Park Yeri Bazlı (tekil ROI kararı)** | 106 | 2 | 108 | **%98,15** |
-
-* **Başarılı Tespit Örneği:** `results/basarili_ornek.png`
+* **Orijinal Görüntü:** `results/orijinal_goruntu.png`
+* **Ara İşlem Çıktıları:** `results/ara_islem_ciktilari.png`
+* **Başarılı Tespit Örneği (Son Çıktı):** `results/basarili_ornek.png`
 * **Hatalı Tespit Örneği:** `results/hata_analizi.png`
 
 ---
@@ -71,7 +72,7 @@ Sistemin yanıldığı tek test fotoğrafında (`results/hata_analizi.png`) 6 pa
 ---
 
 ## 7. Sonuç
-Geliştirme aşamasında 42 fotoğraf üzerinde kurulan ve Canny karşısında gölge bastırma avantajı sayısal olarak doğrulanan **CLAHE + Gaussian Blur + Sobel X + Morfolojik Genişletme + %12 Eşikleme** işlem hattı, 18 fotoğraflık test setinde fotoğraf bazında **%94,44** (17/18), park yeri bazında ise **%98,15** (106/108) doğruluk sağlamıştır. Tüm adımlar klasik sayısal görüntü işleme sınırları içinde ve tekrarlanabilir biçimde tamamlanmıştır.
+Geliştirme aşamasında 42 fotoğraf üzerinde kurulan ve Canny'ye göre daha düşük kenar yoğunluğu veren **CLAHE + Gaussian Blur + Sobel X + Morfolojik Genişletme + %12 Eşikleme** işlem hattı, 18 fotoğraflık test setinde fotoğraf bazında **%94,44** (17/18), park yeri bazında ise **%98,15** (106/108) doğruluk sağlamıştır. Tüm adımlar klasik sayısal görüntü işleme sınırları içinde ve tekrarlanabilir biçimde tamamlanmıştır.
 
 ---
 
