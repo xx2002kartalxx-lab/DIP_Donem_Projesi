@@ -14,7 +14,7 @@ Bu projenin amacı; derin öğrenme veya makine öğrenmesi sınıflandırıcıl
 ---
 
 ## 2. Veri Seti ve Hazırlık
-Veri seti, farklı gün saatlerine ait güneş ışığı, keskin bina gölgeleri ve düşük kontrast koşullarını ile 8 farklı doluluk düzenini kapsamaktadır. Zorlaştırıcı koşul olarak günün farklı saatlerindeki ışık değişimi ve güneşli ile bulutlu hava durumu kullanılmıştır.
+Çalışmada açık kaynaklı PKLot (PUCPR) dış mekan otopark veri setinden seçilen toplam 60 fotoğraf kullanılmıştır.Veri seti, farklı gün saatlerine ait güneş ışığı, keskin bina gölgeleri ve düşük kontrast koşullarını ile 8 farklı doluluk düzenini kapsamaktadır. Zorlaştırıcı koşul olarak günün farklı saatlerindeki ışık değişimi ve güneşli ile bulutlu hava durumu kullanılmıştır.
 
 * **Geliştirme Seti (`data/gelistirme/`):** 42 fotoğraf (%70) – Algoritma tasarımı, yöntem karşılaştırması ve optimum eşik değerinin belirlenmesi için kullanılmıştır.
 * **Test Seti (`data/test/`):** 18 fotoğraf (%30) – Geliştirme aşamasında sabitlenen parametrelerle nihai performans değerlendirmesi için ayrılmıştır.
